@@ -5,15 +5,15 @@
   <title>Cyber Dash - Flappy Style</title>
   <style>
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: black;
-      font-family: 'Courier New', Courier, monospace;
+    html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
     }
     canvas {
-      display: block;
-      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+  display: block;
+  width: 100%;
+  height: 100%;
     }
     #restartBtn {
       position: fixed;
@@ -46,6 +46,13 @@
     const bgMusic1 = document.getElementById("bgMusic1");
     const bgMusic2 = document.getElementById("bgMusic2");
     let currentTrack = 0;
+
+    function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas(); // Call on load
 
     function playNextTrack() {
       bgMusic1.pause();
